@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="d8ii-cordova-plugin-fcm" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Firebase messaging</name>
+
+    <js-module name="fcm" src="www/fcm.js">
+        <clobbers target="d8ii.fcm" />
+    </js-module>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="Firebase messaging">
+                <param name="android-package" value="com.d8ii.cordova-plugin-fcm" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/Fcm.java" target-dir="src/d8ii-cordova-plugin-fcm/" />
+    </platform>
+
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="Firebase messaging">
+                <param name="ios-package" value="D8iiCordovaPluginFcm" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/Fcm.swift" />
+         <header-file src="src/ios/Fcm-Bridging-Header.h" />
+    </platform>
+
+</plugin>
